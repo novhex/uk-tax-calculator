@@ -27,6 +27,13 @@ class TaxCodeCalculator {
 		}
 	}
 
+/*
+ * Finds the letter in the tax code for calculating the personal allowance
+ * If the code is K, the amount is added to the total taxable
+ * If not, perform the calculation to work out the personal allowance
+ * @return 	integer 			Annual personal allowance based on tax code          
+ */
+
 	public function get_personal_allowance_from_code() {
 
 		$this->tax_code_calculator();

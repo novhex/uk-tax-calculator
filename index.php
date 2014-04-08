@@ -84,15 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 	$taxcalc->calculate_taxes();
 
-	
-	 
-	 // echo '<pre>';
-	 // var_dump($taxcalc->totalTaxableAmount);
-	 // exit;
-	
-
-
-
 }
 
 ?>
