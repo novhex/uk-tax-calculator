@@ -14,7 +14,6 @@ class TaxCodeCalculator {
 		// Find a valid tax code letter from the input field
 		// Not required for most letters, but needed in particular for K
 		// preg_match('/([KDLYTP]+)/i', $this->tax_code_is, $taxCodeLetter); (Don't need to find all valid tax code letters right now)
-		// Will add tax code validation in a later version
 
 		preg_match('/([K]+)/i', $this->tax_code_is, $taxCodeLetter);
 
@@ -27,13 +26,6 @@ class TaxCodeCalculator {
 		$this->taxCodeLetter = $taxCodeLetter[0];
 		}
 	}
-
-/*
- * Checks the tax code entered. If the code is K, add the amount calculated to
- * the total taxable amount.  If not, run the calculation to work out the personal
- * allowance based on the tax code instead.
- * @return 	integer   Annual personal allowance based on the tax code        
- */
 
 	public function get_personal_allowance_from_code() {
 
