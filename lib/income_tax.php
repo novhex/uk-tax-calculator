@@ -181,6 +181,12 @@ class TaxCalculation {
 			} 
 	}
 
+/*
+ * Checks if the tax code is one of the special codes to work out bands/taxable amounts
+ * Compares the total taxable amount against the tax bands for chosen tax year and
+ * works out the value of tax for each banding
+ * @return 	integer   Personal allowance by tax code          
+ */
 
 	public function calculate_tax_bands() {
 
@@ -252,6 +258,12 @@ class TaxCalculation {
 
 	}
 
+/*
+ * Takes total weekly income less deductions and works out the national
+ * insurance contributions for the primary and upper bandings.
+ * @return 	integer   Annual national insurance contributions          
+ */
+
 	public function get_national_insurance_contribution() {
 		$nationalInsuranceCalculator = new nationalInsuranceCalculator(
 										($this->persona["gross_annual_income"] - $this->showChildCareVouchers) / 52, $this->taxYear, $this->niRates);
@@ -260,6 +272,13 @@ class TaxCalculation {
 
 		return $totalNIContribution;
 	}
+
+/*
+ * Takes gross income less deductions and works out whether the income
+ * is over the start amount before calculating the repayment amount.
+ * Student loans are also rounded down to the nearest pound.
+ * @return 	integer   Annual student loan repayment amount          
+ */
 
 	public function get_student_loan_repayment() {
 		if ($this->persona["gross_annual_income"] >= $this->studentRates["start"]) {
@@ -274,6 +293,12 @@ class TaxCalculation {
 
 		return floor($deduction);
 	}
+
+/*
+ * If the pension amount has a percentage in it, use that percentage to work
+ * out the annual amount.  If it's a number, just use that as the annual amount.
+ * @return 	integer   Annual pension amount.          
+ */
 
 	public function get_employers_pension_amount() {
 		preg_match('/[%]/', $this->persona["pension_contribution_is"], $pensionPercentage);
@@ -310,6 +335,12 @@ class TaxCalculation {
 
 	}
 
+/*
+ * Using the annual pension amount, check if the income is in a higher or
+ * additional band and works out HMRC pension relief amount.
+ * @return 	integer   Annual HMRC pension relief amount.          
+ */
+
 	public function get_hmrc_employers_pension_amount($pensionAmount) {
 		$taxBands = $this->calculate_tax_bands();
 
@@ -329,6 +360,12 @@ class TaxCalculation {
 		}
 
 	}
+
+/*
+ * Checks the income and which tax band its in the figure out the maximum
+ * childcare voucher amount.
+ * @return 	integer   Annual childcare voucher amount          
+ */
 
 	public function get_childcare_voucher_amount() {
 		$income = $this->persona["gross_annual_income"];
