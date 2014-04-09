@@ -16,6 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$pension_every_x = trim($_POST["pension_every_x"]);
 	$childcare_vouchers_are = trim($_POST["childcare_vouchers_are"]);
 	$vouchers_every_x = trim($_POST["vouchers_every_x"]);
+	$is_childcare_pre2011 = NULL;
+	$is_blind = NULL;
+	$exclude_ni = NULL;
+	$has_student_loan = NULL;
+	$is_married = NULL;
 
 	if ($income_every_x === "day") {
 		$gross_annual_income = $gross_income_is * 260;
@@ -35,49 +40,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 	if (isset($_POST["is_childcare_pre2011"])) {
 		$is_childcare_pre2011 = trim($_POST["is_childcare_pre2011"]);
-	} else {
-		$is_childcare_pre2011 = NULL;
-	}
+	} 
 
 	if (isset($_POST["is_blind"])) { 
 		$is_blind = trim($_POST["is_blind"]);
-	} else {
-		$is_blind = NULL;
-	}
+	} 
 
 	if (isset($_POST["exclude_ni"])) { 
 		$exclude_ni = trim($_POST["exclude_ni"]);
-	} else {
-		$exclude_ni = NULL;
-	}
+	} 
 
 	if (isset($_POST["has_student_loan"])) { 
 		$has_student_loan = trim($_POST["has_student_loan"]);
-	} else {
-		$has_student_loan = NULL;
-	}
+	} 
 
 	if (isset($_POST["is_married"])) { 
 		$is_married = trim($_POST["is_married"]);
-	} else {
-		$is_married = NULL;
-	}
+	} 
 
 	$persona = array(
-		"tax_year_is" 				=> filter_var($tax_year_is, FILTER_SANITIZE_STRING),
-		"income_every_x" 			=> filter_var($income_every_x, FILTER_SANITIZE_STRING),
-		"gross_annual_income" 		=> filter_var($gross_annual_income, FILTER_SANITIZE_NUMBER_INT),
-		"other_allowance_is" 		=> filter_var($other_allowance_is, FILTER_SANITIZE_NUMBER_INT),
-		"tax_code_is" 				=> strtoupper(filter_var($tax_code_is, FILTER_SANITIZE_STRING)),
-		"age_is" 					=> filter_var($age_is, FILTER_SANITIZE_STRING),
-		"pension_contribution_is" 	=> filter_var($pension_contribution_is, FILTER_SANITIZE_STRING),
-		"pension_every_x" 			=> filter_var($pension_every_x, FILTER_SANITIZE_STRING),
+		"tax_year_is"               => filter_var($tax_year_is, FILTER_SANITIZE_STRING),
+		"income_every_x"            => filter_var($income_every_x, FILTER_SANITIZE_STRING),
+		"gross_annual_income"       => filter_var($gross_annual_income, FILTER_SANITIZE_NUMBER_INT),
+		"other_allowance_is"        => filter_var($other_allowance_is, FILTER_SANITIZE_NUMBER_INT),
+		"tax_code_is"               => strtoupper(filter_var($tax_code_is, FILTER_SANITIZE_STRING)),
+		"age_is"                    => filter_var($age_is, FILTER_SANITIZE_STRING),
+		"pension_contribution_is"   => filter_var($pension_contribution_is, FILTER_SANITIZE_STRING),
+		"pension_every_x"           => filter_var($pension_every_x, FILTER_SANITIZE_STRING),
 		"annual_childcare_vouchers" => filter_var($annual_childcare_vouchers, FILTER_SANITIZE_NUMBER_INT),
-		"is_childcare_pre2011" 		=> filter_var($is_childcare_pre2011, FILTER_SANITIZE_STRING),
-		"is_blind" 					=> filter_var($is_blind, FILTER_SANITIZE_STRING),
-		"exclude_ni" 				=> filter_var($exclude_ni, FILTER_SANITIZE_STRING),
-		"has_student_loan" 			=> filter_var($has_student_loan, FILTER_SANITIZE_STRING),
-		"is_married" 				=> filter_var($is_married, FILTER_SANITIZE_STRING)
+		"is_childcare_pre2011"      => filter_var($is_childcare_pre2011, FILTER_SANITIZE_STRING),
+		"is_blind"                  => filter_var($is_blind, FILTER_SANITIZE_STRING),
+		"exclude_ni"                => filter_var($exclude_ni, FILTER_SANITIZE_STRING),
+		"has_student_loan"          => filter_var($has_student_loan, FILTER_SANITIZE_STRING),
+		"is_married"                => filter_var($is_married, FILTER_SANITIZE_STRING)
 		);
 
 	$taxcalc = new TaxCalculation($persona);
