@@ -3,6 +3,7 @@
 require_once 'lib/class-income-tax.php';
 require_once 'lib/data/income-tax-rates.php';
 require_once 'lib/data/national-insurance-rates.php';
+require_once 'lib/utils.php';
 
 if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
@@ -16,47 +17,14 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 	$pension_every = trim( $_POST['pension_every_x'] );
 	$childcare_vouchers = trim( $_POST['childcare_vouchers_are'] );
 	$vouchers_every = trim( $_POST['vouchers_every_x'] );
-	$childcare_pre2011 = NULL;
-	$blind = NULL;
-	$exclude_ni = NULL;
-	$student_loan = NULL;
-	$married = NULL;
+	$childcare_pre2011 = get_other_allowance( 'is_childcare_pre2011' );
+	$blind = get_other_allowance( 'is_blind' );
+	$exclude_ni = get_other_allowance( 'exclude_ni' );
+	$student_loan = get_other_allowance( 'has_student_loan' );
+	$married = get_other_allowance( 'is_married' );
+	$income = get_annual_income( $income_every_x, $gross_income_is );
+	$vouchers = get_annual_childcare( $vouchers_every, $childcare_vouchers );
 
-	if ( 'day' == $income_every_x ) {
-		$income = $gross_income_is * 260;
-	} elseif ( 'week' == $income_every_x ) {
-		$income = $gross_income_is * 52;
-	} elseif ( 'month' == $income_every_x ) {
-		$income = $gross_income_is * 12;
-	} elseif ( 'year' == $income_every_x ) {
-		$income = $gross_income_is;
-	}
-
-	if ( 'week' == $vouchers_every ) {
-		$vouchers = $childcare_vouchers * 53; // It's 53 and not 52 due to rounding of the numbers
-	} elseif ( 'month' == $vouchers_every ) {
-		$vouchers = $childcare_vouchers * 12;
-	}
-
-	if ( isset( $_POST['is_childcare_pre2011'] ) ) {
-		$childcare_pre2011 = trim( $_POST['is_childcare_pre2011'] );
-	} 
-
-	if ( isset( $_POST['is_blind'] ) ) { 
-		$blind = trim( $_POST['is_blind'] );
-	} 
-
-	if ( isset( $_POST['exclude_ni'] ) ) { 
-		$exclude_ni = trim( $_POST['exclude_ni'] );
-	} 
-
-	if ( isset( $_POST['has_student_loan'] ) ) { 
-		$student_loan = trim( $_POST['has_student_loan'] );
-	} 
-
-	if ( isset( $_POST['is_married'] ) ) { 
-		$married = trim( $_POST['is_married'] );
-	} 
 
 	$persona = array(
 		'year'              => filter_var( $year, FILTER_SANITIZE_STRING ),
