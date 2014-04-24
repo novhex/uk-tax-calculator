@@ -53,13 +53,19 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
 
 <?php include 'templates/header-template.php'; ?>
 
+<div class="container">
+
+
+<h1>Tax Calculator</h1>
+
+<div class="row">
+
 <?php include 'templates/calculator-template.php'; ?>
                         
 <?php include 'templates/results-template.php'; ?>
 
-</div>
+</div> <!-- end .row -->
 
-</div>
-</div>
+</div> <!-- /.container-fluid -->
 
 <?php include 'templates/footer-template.php'; ?>

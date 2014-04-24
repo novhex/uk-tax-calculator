@@ -292,10 +292,10 @@ class Tax_Calculator {
 			$pension_percentage_amount = preg_replace( '/\D/', '', $this->pension );
 
 			if ( 'month' == $this->pension_every ) {
-				$monthly_income = $this->income / 52;
+				$monthly_income = $this->income / 12;
 
 				$pension_amount = ($monthly_income / 100) * $pension_percentage_amount;
-				$annual_amount = $pension_amount * 52;
+				$annual_amount = $pension_amount * 12;
 
 				return $annual_amount;
 			} else {
@@ -305,10 +305,9 @@ class Tax_Calculator {
 			}
 		} else {
 			if ( 'month' == $this->pension_every ) {
-				$monthly_income = $this->income / 52;
-
+				
 				$pension_amount = $this->pension;
-				$annual_amount = $pension_amount * 52;
+				$annual_amount = $pension_amount * 12;
 
 				return $annual_amount;
 			} else {
@@ -425,7 +424,7 @@ class Tax_Calculator {
 
 		if ( 'on' == $this->student_loan ) {
 			$this->show_student_loan_amount = $this->get_student_loan_repayment();
-			$this->showTotalDeduction += $this->show_student_loan_amount;
+			$this->show_total_deduction += $this->show_student_loan_amount;
 		}
 
 		if ( 'on' == $this->exclude_ni || 'over_75' == $this->age || '65_74' == $this->age ) {
