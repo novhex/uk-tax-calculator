@@ -49,7 +49,7 @@
 				</td>
 			</tr>
 
-			<tr class="childcare-row" <?php if ( $taxcalc->show_childcare_vouchers == 0 ) { echo 'style="display:none"'; } ?>>
+			<tr class="childcare-row" <?php if ( !isset( $taxcalc->show_childcare_vouchers ) || $taxcalc->show_childcare_vouchers == 0 ) { echo 'style="display:none"'; } ?>>
 				<td class="row-label">Childcare Vouchers</td>
 				<td class="yr">
 				<?php
@@ -129,7 +129,7 @@
 				</td>
 			</tr>
 
-			<tr class="pension-row" <?php if ( $taxcalc->show_employer_pension == 0 ) { echo 'style="display:none"'; } ?>>
+			<tr class="pension-row" <?php if ( !isset( $taxcalc->show_employer_pension ) || $taxcalc->show_employer_pension == 0 ) { echo 'style="display:none"'; } ?>>
 				<td class="row-label"><a id="pension-expand" href="javascript:"><span class="glyphicon glyphicon-chevron-right"></span></a>&nbsp;Pension [You]</td>
 				<td class="yr">
 				<?php
@@ -294,7 +294,7 @@
 					if ( isset( $taxcalc ) ) {
 							echo $taxcalc->bands["additional"]["rate"];
 						} else { 
-							echo 50;
+							echo 45;
 						}
 				?>% tax rate</em>
 				</td>

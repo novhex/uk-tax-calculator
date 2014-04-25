@@ -109,7 +109,7 @@
 	</div>
 </div>
 
-<div class="row" id="voucher_extra" <?php if ( $taxcalc->show_childcare_vouchers == 0 ) { echo 'style="display:none"'; } ?>>
+<div class="row" id="voucher_extra" <?php if ( !isset( $taxcalc->show_childcare_vouchers ) || $taxcalc->show_childcare_vouchers == 0 ) { echo 'style="display:none"'; } ?>>
 	<div class="col-md-10">
 		<label for="is_childcare_pre2011">Did you sign up before April 6 2011?</label>
 	</div>
