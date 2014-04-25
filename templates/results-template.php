@@ -300,7 +300,7 @@
 				</td>
 				<td class="yr">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["additional"], 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -309,7 +309,7 @@
 				</td>
 				<td class="mth">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["additional"] / 12, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -318,7 +318,7 @@
 				</td>
 				<td class="wk">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["additional"] / 52, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -327,7 +327,7 @@
 				</td>
 				<td class="day">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["additional"] / 260, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -340,7 +340,7 @@
 				<td class="row-label">&nbsp;&nbsp;&nbsp;&nbsp;<em>40% tax rate</em></td>
 				<td class="yr">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["higher"], 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -349,7 +349,7 @@
 				</td>
 				<td class="mth">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["higher"] / 12, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -358,7 +358,7 @@
 				</td>
 				<td class="wk">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["higher"] / 52, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -367,7 +367,7 @@
 				</td>
 				<td class="day">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["higher"] / 260, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -380,7 +380,7 @@
 				<td class="row-label">&nbsp;&nbsp;&nbsp;&nbsp;<em>20% tax rate</em></td>
 				<td class="yr">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["basic"], 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -389,7 +389,7 @@
 				</td>
 				<td class="mth">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["basic"] / 12, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -398,7 +398,7 @@
 				</td>
 				<td class="wk">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["basic"] / 52, 2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
@@ -407,7 +407,7 @@
 				</td>
 				<td class="day">
 				<?php
-					if ( isset( $taxcalc ) ) {
+					if ( isset( $taxcalc->deduction ) ) {
 							echo '&pound;' . number_format( $taxcalc->deduction["basic"] / 260,2 );
 						} else {
 							echo '&pound;' . number_format( 0, 2 );
