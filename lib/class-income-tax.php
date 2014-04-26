@@ -273,9 +273,10 @@ class Tax_Calculator {
 			}
 
 			$deduction = ($deductable_amount / 100) * $this->student_rates['rate'];
+
+			return floor( $deduction );
 		}
 
-		return floor( $deduction );
 	}
 
 	/*

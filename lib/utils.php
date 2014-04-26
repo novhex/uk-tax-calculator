@@ -26,3 +26,7 @@ function get_annual_childcare( $frequency, $amount ) {
 		return $amount * 12;
 	}
 }
+
+function trim_post( $post ) {
+	return trim( $_POST[ $post ] );
+}
