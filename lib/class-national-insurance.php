@@ -1,9 +1,12 @@
 <?php
 
-
-
-
 class National_Insurance_Calculator {
+
+	const START = 'start';
+	const END = 'end';
+	const RATE = 'rate';
+	const PRIMARY = 'primary';
+	const UPPER = 'upper';
 
 	public $weekly_income;
 	public $tax_year;
@@ -19,42 +22,34 @@ class National_Insurance_Calculator {
 	/*
 	 * Loops through the national insurance bands to check if the income is
 	 * within the band to find the total weekly contribution.
-	 * @return 	float 		  The lowest value of the two checked 			          
+	 *
+	 * @return float The lowest value of the two checked 			          
 	 */
-
 	public function get_ni_contributions() {
 		$band_deductions = 0;
 		$values = array();
 		foreach ( $this->ni_bands as $key => $band ) {
 
-			if ( null == $band['end'] ) {
-				$band['end'] = 9999999999999999999;
+			if ( null == $band[ self::END ] ) {
+				$band[ self::END ] = 9999999999999999999;
 			}
 
-			if ( $this->weekly_income > $band['start'] ) {
-				if ( $band['end'] && $band['end'] > 0 ) {
-					$deductable_amount = min( $this->weekly_income, $band['end'] ) - $band['start'];
+			if ( $this->weekly_income > $band[ self::START ] ) {
+				if ( $band[ self::END ] && $band[ self::END ] > 0 ) {
+					$deductable_amount = min( $this->weekly_income, $band[ self::END ] ) - $band[ self::START ];
 				} else {
-					$deductable_amount = $this->weekly_income - $band['start'];
+					$deductable_amount = $this->weekly_income - $band[ self::START ];
 				}
 
-				
-
-			} elseif ( $this->weekly_income < $band['start'] ) {
+			} elseif ( $this->weekly_income < $band[ self::START ] ) {
 				$deductable_amount = 0;
 			}
-				$band_deductions = ($deductable_amount / 100) * $band['rate'];
-				$values[ $key ] = $band_deductions;
-		
+				$band_deductions = ($deductable_amount / 100) * $band[ self::RATE ];
+				$values[ $key ] = $band_deductions;	
 		}
 
-		$total_contribution = ($values['primary'] + $values['upper']) * 52;
+		$total_contribution = ($values[ self::PRIMARY ] + $values[ self::UPPER ]) * 52;
 
 		return $total_contribution;
 	}
-		
-	
-
-
-
 }
