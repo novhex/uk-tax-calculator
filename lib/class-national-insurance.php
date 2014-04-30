@@ -2,11 +2,11 @@
 
 class National_Insurance_Calculator {
 
-	const START = 'start';
-	const END = 'end';
-	const RATE = 'rate';
-	const PRIMARY = 'primary';
-	const UPPER = 'upper';
+	const BAND_START = 'start';
+	const BAND_END = 'end';
+	const BAND_RATE = 'rate';
+	const THRESHOLD_PRIMARY = 'primary';
+	const THRESHOLD_UPPER = 'upper';
 
 	public $weekly_income;
 	public $tax_year;
@@ -30,25 +30,25 @@ class National_Insurance_Calculator {
 		$values = array();
 		foreach ( $this->ni_bands as $key => $band ) {
 
-			if ( null == $band[ self::END ] ) {
-				$band[ self::END ] = 9999999999999999999;
+			if ( null === $band[ self::BAND_END ] ) {
+				$band[ self::BAND_END ] = 9999999999999999999;
 			}
 
-			if ( $this->weekly_income > $band[ self::START ] ) {
-				if ( $band[ self::END ] && $band[ self::END ] > 0 ) {
-					$deductable_amount = min( $this->weekly_income, $band[ self::END ] ) - $band[ self::START ];
+			if ( $this->weekly_income > $band[ self::BAND_START ] ) {
+				if ( $band[ self::BAND_END ] && $band[ self::BAND_END ] > 0 ) {
+					$deductable_amount = min( $this->weekly_income, $band[ self::BAND_END ] ) - $band[ self::BAND_START ];
 				} else {
-					$deductable_amount = $this->weekly_income - $band[ self::START ];
+					$deductable_amount = $this->weekly_income - $band[ self::BAND_START ];
 				}
 
-			} elseif ( $this->weekly_income < $band[ self::START ] ) {
+			} elseif ( $this->weekly_income < $band[ self::BAND_START ] ) {
 				$deductable_amount = 0;
 			}
-				$band_deductions = ($deductable_amount / 100) * $band[ self::RATE ];
+				$band_deductions = ($deductable_amount / 100) * $band[ self::BAND_RATE ];
 				$values[ $key ] = $band_deductions;	
 		}
 
-		$total_contribution = ($values[ self::PRIMARY ] + $values[ self::UPPER ]) * 52;
+		$total_contribution = ($values[ self::THRESHOLD_PRIMARY ] + $values[ self::THRESHOLD_UPPER ]) * 52;
 
 		return $total_contribution;
 	}

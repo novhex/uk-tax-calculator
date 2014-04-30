@@ -8,14 +8,14 @@ require_once 'lib/utils.php';
 if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
 
 	$persona = array(
-		'year'              => trim_post( 'tax_year_is' ),
-		'income'            => get_annual_income( trim_post( 'income_every_x' ), trim_post( 'gross_income_is' ) ),
-		'other_allowance'   => trim_post( 'other_allowance_is' ),
-		'tax_code'          => strtoupper(trim_post( 'tax_code_is' )),
-		'age'               => trim_post( 'age_is' ),
-		'pension'           => trim_post( 'pension_contribution_is' ),
-		'pension_every'     => trim_post( 'pension_every_x' ),
-		'vouchers'          => get_annual_childcare( trim_post( 'vouchers_every_x' ), trim_post( 'childcare_vouchers_are' ) ),
+		'year'              => get_sanitized_tax_option( 'tax_year_is' ),
+		'income'            => get_annual_income( get_sanitized_tax_option( 'income_every_x' ), get_sanitized_tax_option( 'gross_income_is' ) ),
+		'other_allowance'   => get_sanitized_tax_option( 'other_allowance_is' ),
+		'tax_code'          => strtoupper(get_sanitized_tax_option( 'tax_code_is' )),
+		'age'               => get_sanitized_tax_option( 'age_is' ),
+		'pension'           => get_sanitized_tax_option( 'pension_contribution_is' ),
+		'pension_every'     => get_sanitized_tax_option( 'pension_every_x' ),
+		'vouchers'          => get_annual_childcare( get_sanitized_tax_option( 'vouchers_every_x' ), get_sanitized_tax_option( 'childcare_vouchers_are' ) ),
 		'childcare_pre2011' => get_other_allowance( 'is_childcare_pre2011' ),
 		'blind'             => get_other_allowance( 'is_blind' ),
 		'exclude_ni'        => get_other_allowance( 'exclude_ni' ),
@@ -38,7 +38,7 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
 	<div class="row">
 		<?php include 'templates/calculator-template.php'; ?>            
 		<?php include 'templates/results-template.php'; ?>
-	</div> <!-- end .row -->
-</div> <!-- /.container -->
+	</div>
+</div>
 
 <?php include 'templates/footer-template.php'; ?>
