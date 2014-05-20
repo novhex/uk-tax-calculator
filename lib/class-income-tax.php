@@ -51,7 +51,7 @@ class Tax_Calculator {
 	/*
 	 * Sets the default values we need when the class is instantiated.
 	 *
-	 * @param array $persona          User submitted inputs
+	 * @param array $persona User submitted inputs
 	 * @param array $income_tax_rates Raw data for all tax years           
 	 */
 	public function __construct( $persona ) {
@@ -59,6 +59,7 @@ class Tax_Calculator {
 		include 'data/national-insurance-rates.php';
 		include 'data/student-loan-rates.php';
 		include 'data/childcare-voucher-rates.php';
+
 		// Set the persona and values
 		$this->persona = $persona;
 		$this->year = $this->persona[ self::TAX_YEAR ];
@@ -77,8 +78,7 @@ class Tax_Calculator {
 
 		// Set tax rates
 		$this->rates = $income_tax_rates;
-		$this->ni_rates = $national_insurance_rates;
-		
+		$this->ni_rates = $national_insurance_rates;	
 		$this->bands = $this->rates[$this->year][ self::RATES ];
 		$this->allowances = $this->rates[$this->year][ self::ALLOWANCES ];
 		$this->student_rates = $student_loan_rates[ $this->year ];
@@ -237,6 +237,7 @@ class Tax_Calculator {
 					$output[ self::BAND_HIGHER ] = 0;
 					$output[ self::BAND_ADDITIONAL ] = round( $percentage_amount );
 					$this->show_tax_free_allowance = 0;
+
 					return $output;
 				case self::TAX_CODE_NT:
 					// No Tax
@@ -379,7 +380,6 @@ class Tax_Calculator {
 
 		if ( $income >= $bands[ self::BAND_HIGHER ][ self::BAND_START ] && $vouchers > $rates[ self::BAND_HIGHER ] && '' === $pre2011 ) {
 			$vouchers = $rates[ self::BAND_HIGHER ];
-
 		} 
 
 		if ( $income >= $bands[ self::BAND_ADDITIONAL ][ self::BAND_START ] && $vouchers > $rates[ self::BAND_ADDITIONAL ] && '' === $pre2011 ) {

@@ -7,6 +7,8 @@ class National_Insurance_Calculator {
 	const BAND_RATE = 'rate';
 	const THRESHOLD_PRIMARY = 'primary';
 	const THRESHOLD_UPPER = 'upper';
+	const NUMBER_OF_WEEKS = 52;
+	const BAND_END_MAX = 9999999999999999999;
 
 	public $weekly_income;
 	public $tax_year;
@@ -31,7 +33,7 @@ class National_Insurance_Calculator {
 		foreach ( $this->ni_bands as $key => $band ) {
 
 			if ( null === $band[ self::BAND_END ] ) {
-				$band[ self::BAND_END ] = 9999999999999999999;
+				$band[ self::BAND_END ] = self::BAND_END_MAX;
 			}
 
 			if ( $this->weekly_income > $band[ self::BAND_START ] ) {
@@ -48,7 +50,7 @@ class National_Insurance_Calculator {
 				$values[ $key ] = $band_deductions;	
 		}
 
-		$total_contribution = ($values[ self::THRESHOLD_PRIMARY ] + $values[ self::THRESHOLD_UPPER ]) * 52;
+		$total_contribution = ( $values[ self::THRESHOLD_PRIMARY ] + $values[ self::THRESHOLD_UPPER ] ) * self::NUMBER_OF_WEEKS;
 
 		return $total_contribution;
 	}

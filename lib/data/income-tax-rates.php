@@ -13,7 +13,6 @@ $income_tax_rates = array(
             'minimum_amount_of_married_couples' => 2670,
             'blind_persons' => 1890,
             ),
-
         'rates' => array(
             'savings' => array(
                 'rate' => 10,
@@ -31,11 +30,8 @@ $income_tax_rates = array(
                 'end' => null,
                 ),
             'additional' => null,
-
         )
-
     ),
-
     'year2010_11' => array(
         'allowances' => array(
             'personal' => 6475,
@@ -48,7 +44,6 @@ $income_tax_rates = array(
             'minimum_amount_of_married_couples' => 2670,
             'blind_persons' => 1890,
             ),
-
         'rates' => array(
             'savings' => array(
                 'rate' => 10,
@@ -69,12 +64,9 @@ $income_tax_rates = array(
                 'rate' => 50,
                 'start' => 150000,
                 'end' => null,
-                )
-            
+                )           
         )
-
     ),
-
     'year2011_12' => array(
         'allowances' => array(
             'personal' => 7475,
@@ -87,7 +79,6 @@ $income_tax_rates = array(
             'minimum_amount_of_married_couples' => 2800,
             'blind_persons' => 1980,
             ),
-
         'rates' => array(
             'savings' => array(
                 'rate' => 10,
@@ -108,12 +99,9 @@ $income_tax_rates = array(
                 'rate' => 50,
                 'start' => 150000,
                 'end' => null,
-                )
-            
+                )          
         )
-
     ),
-
     'year2012_13' => array(
         'allowances' => array(
             'personal' => 8105,
@@ -126,7 +114,6 @@ $income_tax_rates = array(
             'minimum_amount_of_married_couples' => 2960,
             'blind_persons' => 2100,
             ),
-
         'rates' => array(
             'savings' => array(
                 'rate' => 10,
@@ -147,12 +134,9 @@ $income_tax_rates = array(
                 'rate' => 50,
                 'start' => 150000,
                 'end' => null,
-                )
-            
+                )          
         )
-
     ),
-
     'year2013_14' => array(
         'allowances' => array(
             'personal' => 9440,
@@ -165,7 +149,6 @@ $income_tax_rates = array(
             'minimum_amount_of_married_couples' => 3040,
             'blind_persons' => 2160,
             ),
-
         'rates' => array(
             'savings' => array(
                 'rate' => 10,
@@ -186,12 +169,9 @@ $income_tax_rates = array(
                 'rate' => 45,
                 'start' => 150000,
                 'end' => null,
-                )
-            
+                )           
         )
-
     ),
-
     'year2014_15' => array(
         'allowances' => array(
             'personal' => 10000,
@@ -204,7 +184,6 @@ $income_tax_rates = array(
             'minimum_amount_of_married_couples' => 3140,
             'blind_persons' => 2230,
             ),
-
         'rates' => array(
             'savings' => array(
                 'rate' => 10,
@@ -226,8 +205,6 @@ $income_tax_rates = array(
                 'start' => 150000,
                 'end' => null,
                 )
-            )
-            
+            )           
         )
-
     );
