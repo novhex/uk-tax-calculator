@@ -1,31 +1,31 @@
-$( '#childcare_vouchers_are' ).focus(function() {
-  $( '#voucher_extra').show('fast');
+$( '#childcare_vouchers_are' ).focus( function() {
+  $( '#voucher_extra').show( 'fast' );
 });
 
-$( '#childcare_vouchers_are' ).blur(function() {
-  if ( $( '#childcare_vouchers_are' ).val().length == 0 ) {
-  $( '#voucher_extra').hide('fast');
+$( '#childcare_vouchers_are' ).blur( function() {
+  if ( '' === $( '#childcare_vouchers_are' ).val() ) {
+  $( '#voucher_extra').hide( 'fast' );
   } else {
     return;
   }
 });
 
-$( '#pension-expand' ).click(function() {
-  if ( $( '.hmrc-pension-row' ).is(":visible") ) {
-    $( '.hmrc-pension-row' ).hide('fast');
+$( '#pension-expand' ).on( 'click', function() {
+  if ( $( 'tr.hmrc-pension-row' ).is( ':visible' ) ) {
+    $( 'tr.hmrc-pension-row' ).hide( 'fast' );
     $( '#pension-expand .glyphicon' ).removeClass( 'open' );
   } else {
-    $( '.hmrc-pension-row' ).show('fast');
+    $( 'tr.hmrc-pension-row' ).show( 'fast' );
     $( '#pension-expand .glyphicon' ).addClass( 'open' );
   }
 });
 
-$( '#tax-expand' ).click(function() {
-  if ( $( '.tax-bands' ).is(":visible") ) {
-    $( '.tax-bands' ).hide('fast');
+$( '#tax-expand' ).on( 'click', function() {
+  if ( $( 'tr.tax-bands' ).is( ':visible' ) ) {
+    $( 'tr.tax-bands' ).hide( 'fast' );
     $( '#tax-expand .glyphicon' ).removeClass( 'open' );
   } else {
-    $( '.tax-bands' ).show('fast');
+    $( 'tr.tax-bands' ).show( 'fast' );
     $( '#tax-expand .glyphicon' ).addClass( 'open' );
   }
 });
