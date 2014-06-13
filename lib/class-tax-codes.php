@@ -53,7 +53,7 @@ class Tax_Code_Calculator {
 
 				return $add_to_total_taxable;
 			} elseif ( in_array( $this->tax_code, $this->special_tax_codes ) ) {
-				$personalAllowance = 0;
+				return 0;
 			} else {
 				$division = $this->personal_allowance / 500;
 				$quotient = floor( $division );
