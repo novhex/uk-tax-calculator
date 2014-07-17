@@ -35,10 +35,15 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
 
 <div class="container">
 	<h1>Tax Calculator</h1>
+	<p>A quick and easy salary calculator that lets you work out how much tax and national insurance you pay, and your net income.</p>
 	<div class="row">
 		<?php include 'templates/calculator-template.php'; ?>            
 		<?php include 'templates/results-template.php'; ?>
+
+		<p style="clear:both;">Made by <a href="http://iannuttall.co.uk">Ian Nuttall</a>.</p>
 	</div>
 </div>
+
+
 
 <?php include 'templates/footer-template.php'; ?>
