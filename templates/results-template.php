@@ -1,4 +1,4 @@
-<div class='col-md-7'>
+<div class='col-md-7 table-responsive'>
 		<table id='results' class='table table-bordered table-condensed'>
 
 			<tr style='text-transform:none;' class='results-header'>
