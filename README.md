@@ -1,6 +1,13 @@
-uk-tax-calculator
+UK Tax & Salary Calculator
 =================
 
-A complete UK income tax calculator in PHP
+A complete UK tax and salary calculator built in PHP which allows you to calculate net salary, national insurance contributions, pension contributions, childcare vouchers, student loan repayments, and use your own tax code for more accurate results.
 
-Working version available at: <a href="http://iannuttall.co.uk/taxcalculator/">http://iannuttall.co.uk/taxcalculator</a>
+<a href="http://iannuttall.co.uk/taxcalculator/">Salary calculator in action</a>
+
+TO DO
+=================
+
+* Move all data from arrays into MySQL database
+* Add ability to store user calculations for retrieval, email and data manipulation
+* Refactor code into a simple API
