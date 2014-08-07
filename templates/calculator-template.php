@@ -1,9 +1,11 @@
 <div class='col-md-5 calculator_form'>
 
-	<form method='post' action='./index.php'>
+	<form method='post' action='./'>
 
 		<div class='row'>
-			<p>Enter gross salary, choose options and click <span>Calculate</span></p>
+			<div class='col-md-12'>
+				<p>Enter gross salary, choose options and click <span>Calculate</span></p>
+			</div>
 		</div>
 
 		<div class='row'>

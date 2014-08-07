@@ -378,11 +378,11 @@ class Tax_Calculator {
 			$vouchers = $rates[ self::BAND_BASIC ];
 		}
 
-		if ( $income >= $bands[ self::BAND_HIGHER ][ self::BAND_START ] && $vouchers > $rates[ self::BAND_HIGHER ] && '' === $pre2011 ) {
+		if ( $income >= $bands[ self::BAND_HIGHER ][ self::BAND_START ] && $vouchers > $rates[ self::BAND_HIGHER ] && self::ON !== $pre2011 ) {
 			$vouchers = $rates[ self::BAND_HIGHER ];
 		} 
 
-		if ( $income >= $bands[ self::BAND_ADDITIONAL ][ self::BAND_START ] && $vouchers > $rates[ self::BAND_ADDITIONAL ] && '' === $pre2011 ) {
+		if ( $income >= $bands[ self::BAND_ADDITIONAL ][ self::BAND_START ] && $vouchers > $rates[ self::BAND_ADDITIONAL ] && self::ON !== $pre2011 ) {
 			if ( self::YEAR2013_14 === $this->year || self::YEAR2014_15 === $this->year ) {
 				$rates[ self::BAND_ADDITIONAL ] = 1320;
 

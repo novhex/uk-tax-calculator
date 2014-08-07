@@ -34,8 +34,8 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] ) {
 <?php include 'templates/header-template.php'; ?>
 
 <div class="container">
-	<h1>Tax Calculator</h1>
-	<p>A quick and easy salary calculator that lets you work out how much tax and national insurance you pay, and your net income.</p>
+	<h1>Salary Calculator</h1>
+	<p>A quick and easy income tax and salary calculator that lets you work out how much tax and national insurance you pay, and your net income.  You can also calculate childcare vouchers, pension contributions and student loan repayments.</p>
 	<div class="row">
 		<?php include 'templates/calculator-template.php'; ?>            
 		<?php include 'templates/results-template.php'; ?>
