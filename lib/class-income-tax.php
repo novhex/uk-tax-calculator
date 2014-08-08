@@ -274,8 +274,9 @@ class Tax_Calculator {
 	 * @return int Annual national insurance contributions 
 	 */
 	public function get_national_insurance_contribution() {
+		$annual_vouchers = $this->get_childcare_voucher_amount();
 		$national_insurance_calculator = new National_Insurance_Calculator( 
-										( $this->income - $this->show_childcare_vouchers ) / 52, $this->year, $this->ni_rates );
+										( $this->income - $annual_vouchers ) / 52, $this->year, $this->ni_rates );
 
 		return $national_insurance_calculator->get_ni_contributions();
 	}
@@ -291,8 +292,8 @@ class Tax_Calculator {
 		if ( $this->income >= $this->student_rates[ self::BAND_START ] ) {
 			$deductable_amount = $this->income - $this->student_rates[ self::BAND_START ];
 
-			if ( isset( $this->show_childcare_vouchers ) ) {
-				$deductable_amount -= $this->show_childcare_vouchers;
+			if ( isset( $this->vouchers ) ) {
+				$deductable_amount -= $this->vouchers;
 			}
 
 			$deduction = ( $deductable_amount / 100 ) * $this->student_rates[ self::BAND_RATE ];
